@@ -1,0 +1,25 @@
+{
+  "name": "mesto-ad",
+  "version": "1.0.0",
+  "description": "DAYTE MNE DODELAT",
+  "homepage": "https://github.com/Sakkjarven/mesto-ad#readme",
+  "bugs": {
+    "url": "https://github.com/Sakkjarven/mesto-ad/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sakkjarven/mesto-ad.git"
+  },
+  "license": "ISC",
+  "author": "SAKKJARVEN",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vite": "^7.3.0"
+  }
+}
