@@ -47,9 +47,16 @@ export const addCard = ({ name, link }) => {
     }),
   }).then(getResponseData);
 };
-export const delCard = (cardId) => {
+export const deleteCard = (cardId) => {
   return fetch(`${config.baseUrl}/cards/${cardId}`,{
     method: "DELETE",
     headers: config.headers,
+    message: "Пост удалён"
   }).then(getResponseData);
 };
+export const changeLikeCardStatus = (cardID, isLiked) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
+    method: isLiked ?  "DELETE" : "PUT",
+    headers: config.headers,
+  }).then((res) => getResponseData(res));
+}; 
