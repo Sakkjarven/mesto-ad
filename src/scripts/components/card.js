@@ -11,7 +11,7 @@ const getTemplateInfo = () => {
     .getElementById("popup-info-definition-template")
     .content.querySelector(".popup")
     .cloneNode(true);
-}
+};
 const getTemplate = () => {
   return document
     .getElementById("card-template")
@@ -29,7 +29,9 @@ export const createCardElement = (
   const deleteButton = cardElement.querySelector(
     ".card__control-button_type_delete"
   );
-  const infoButton = cardElement.querySelector(".card__control-button_type_info");
+  const infoButton = cardElement.querySelector(
+    ".card__control-button_type_info"
+  );
 
   const cardImage = cardElement.querySelector(".card__image");
 
@@ -65,7 +67,7 @@ export const createCardElement = (
     );
   }
 
-  if(onInfoCard) {
+  if (onInfoCard) {
     infoButton.addEventListener("click", () => onInfoCard(data._id));
   }
 

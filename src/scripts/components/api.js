@@ -4,15 +4,16 @@ const config = {
     authorization: "16c8ee48-5937-4c20-b437-25f2ce72657a",
     "Content-Type": "application/json",
   },
-}; 
+};
 const getResponseData = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
-}; 
+};
 export const getUserInfo = () => {
-  return fetch(`${config.baseUrl}/users/me`, { // Запрос к API-серверу
+  return fetch(`${config.baseUrl}/users/me`, {
+    // Запрос к API-серверу
     headers: config.headers, // Подставляем заголовки
-  }).then(getResponseData);  // Проверяем успешность выполнения запроса
-}; 
+  }).then(getResponseData); // Проверяем успешность выполнения запроса
+};
 export const getCardList = () => {
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
@@ -27,7 +28,7 @@ export const setUserInfo = ({ name, about }) => {
       about,
     }),
   }).then(getResponseData);
-}; 
+};
 export const setUserAvatar = ({ avatar }) => {
   return fetch(`${config.baseUrl}/users/me/avatar`, {
     method: "PATCH",
@@ -36,7 +37,7 @@ export const setUserAvatar = ({ avatar }) => {
       avatar,
     }),
   }).then(getResponseData);
-}; 
+};
 export const addCard = ({ name, link }) => {
   return fetch(`${config.baseUrl}/cards`, {
     method: "POST",
@@ -48,15 +49,15 @@ export const addCard = ({ name, link }) => {
   }).then(getResponseData);
 };
 export const deleteCard = (cardId) => {
-  return fetch(`${config.baseUrl}/cards/${cardId}`,{
+  return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: config.headers,
-    message: "Пост удалён"
+    message: "Пост удалён",
   }).then(getResponseData);
 };
 export const changeLikeCardStatus = (cardID, isLiked) => {
   return fetch(`${config.baseUrl}/cards/likes/${cardID}`, {
-    method: isLiked ?  "DELETE" : "PUT",
+    method: isLiked ? "DELETE" : "PUT",
     headers: config.headers,
   }).then((res) => getResponseData(res));
-}; 
+};

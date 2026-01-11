@@ -182,7 +182,9 @@ const handleInfoClick = (cardId) => {
       const cardData = cards.find((card) => card._id === cardId);
       const cardInfoModalWindow = document.querySelector(".popup_type_info");
 
-      const cardInfoModalInfoList = cardInfoModalWindow.querySelector(".popup__content_content_info");
+      const cardInfoModalInfoList = cardInfoModalWindow.querySelector(
+        ".popup__content_content_info"
+      );
 
       const title = cardInfoModalInfoList.querySelector(".popup__title");
       title.textContent = "Информация о карточке";
@@ -192,30 +194,36 @@ const handleInfoClick = (cardId) => {
 
       const list = cardInfoModalInfoList.querySelector(".popup__list");
       list.innerHTML = "";
-      list.append(...cardData.likes.map((like) => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("popup__list-item", "popup__list-item_type_badge");
-        listItem.textContent = like.name;
-        return listItem;
-      })); 
-      cardInfoModalInfoList.innerHTML = ""; 
+      list.append(
+        ...cardData.likes.map((like) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add(
+            "popup__list-item",
+            "popup__list-item_type_badge"
+          );
+          listItem.textContent = like.name;
+          return listItem;
+        })
+      );
+
+      cardInfoModalInfoList.innerHTML = "";
       cardInfoModalInfoList.append(
         title,
         createInfoString("Название:", cardData.name),
         createInfoString(
           "Дата создания:",
           formatDate(new Date(cardData.createdAt))
-        )
-        ,createInfoString(
+        ),
+        createInfoString(
           "Владелец:",
           cardData.owner ? cardData.owner.name : "Неизвестно"
-        )
-        ,createInfoString(
+        ),
+        createInfoString(
           "Количество лайков:",
           cardData.likes ? cardData.likes.length : 0
-        )
-        ,text
-        ,list
+        ),
+        text,
+        list
       );
       openModalWindow(cardInfoModalWindow);
     })
